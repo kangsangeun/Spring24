@@ -34,28 +34,28 @@
 
 <div class="main_book">
 	<c:set var="goods_count" value="0" />
-	<h3>전체 상품 페이지</h3>
-	<c:forEach var="category" items="${goodsMap}">
-		<c:forEach var="item" items="${category.value}">
-			<c:set var="goods_count" value="${goods_count+1 }" />
-			<div class="book">
-				<a href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
-					<img class="link" src="${contextPath}/resources/image/1px.gif">
-				</a> <img width="121" height="154"
-					src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}">
-				<div class="title">${item.goods_title }</div>
-				<div class="price">
-					<fmt:formatNumber value="${item.goods_price}" type="number"
-						var="goods_price" />
-					${goods_price}원
-				</div>
+	<h3>베스트셀러</h3>
+	<c:forEach var="item" items="${goodsMap.drink }">
+		<c:set var="goods_count" value="${goods_count+1 }" />
+		<div class="book">
+			<a
+				href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
+				<img class="link" src="${contextPath}/resources/image/1px.gif">
+			</a> <img width="121" height="154"
+				src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}">
+
+			<div class="title">${item.goods_title }</div>
+			<div class="price">
+				<fmt:formatNumber value="${item.goods_price}" type="number"
+					var="goods_price" />
+				${goods_price}원
 			</div>
-			<c:if test="${goods_count==15 }">
-				<div class="book">
-					<font size=20> <a href="#">more</a></font>
-				</div>
-			</c:if>
-		</c:forEach>
+		</div>
+		<c:if test="${goods_count==15   }">
+			<div class="book">
+				<font size=20> <a href="#">more</a></font>
+			</div>
+		</c:if>
 	</c:forEach>
 </div>
 <div class="clear"></div>
