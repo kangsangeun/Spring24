@@ -191,15 +191,15 @@ article {
 	width: 188px; height: 230px; display: block; position: absolute; z-index: 2;
 }
 
-#floatingInput,
-#floatingPassword {
-	width:30%;
+.form-control,
+.btn-primary {
+	width: 400px;
+	height: 50px;
 }
-#testing {
-	text-align:center;
-	align-items:center;
+.form-css01 {
+	display: flex;
+	justify-content: center;
 }
-
 
 
 
@@ -391,18 +391,17 @@ article ul#page_control li a.no_border {
 article ul#page_control li .page_contrl_active {
 	background: rgb(255, 255, 255); border: 1px solid rgb(255, 0, 0); border-image: none; color: rgb(255, 0, 0);
 }
-article h3 {
-	margin-top: 1vh;
-	margin-left: 34vw;
-}
-article h4 {
-	margin-left: 67vw;
+h3 p{
+	text-align: center;
 }
 article h3 {
-	color: rgba(0, 0, 0, 0.8); font-size: 4em; font-weight: 800;
+	color: rgba(0, 0, 0, 0.8);
+	font-weight: 800;
+	margin-top: 50px;
 }
 article h4 {
 	font-size: 0.8em; font-weight: normal;
+	margin-left: 67vw;
 }
 #goods_image {
 	margin: 10px 0px 0px;
