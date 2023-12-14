@@ -3455,8 +3455,8 @@ textarea.form-control.is-invalid {
 
 .btn:hover {
     color: var(--bs-btn-hover-color);
-    background-color: var(--bs-btn-hover-bg);
-    border-color: var(--bs-btn-hover-border-color)
+    background-color: #b94043;
+    border-color: #b41e22
 }
 
 .btn-check+.btn:hover {
@@ -3509,19 +3509,19 @@ fieldset:disabled .btn {
 
 .btn-primary {
     --bs-btn-color: #fff;
-    --bs-btn-bg: #0d6efd;
-    --bs-btn-border-color: #0d6efd;
+    --bs-btn-bg: #b41e22;
+    --bs-btn-border-color: #b41e22;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #0b5ed7;
-    --bs-btn-hover-border-color: #0a58ca;
+    --bs-btn-hover-bg: #b94043;
+    --bs-btn-hover-border-color: #b41e22;
     --bs-btn-focus-shadow-rgb: 49, 132, 253;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #0a58ca;
-    --bs-btn-active-border-color: #0a53be;
+    --bs-btn-active-bg: #DB3838;
+    --bs-btn-active-border-color: #b41e22;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #0d6efd;
-    --bs-btn-disabled-border-color: #0d6efd
+    --bs-btn-disabled-bg: #DB3838;
+    --bs-btn-disabled-border-color: #b41e22
 }
 
 .btn-secondary {
@@ -3686,10 +3686,10 @@ fieldset:disabled .btn {
     --bs-btn-hover-border-color: #b41e22;
     --bs-btn-focus-shadow-rgb: 25, 135, 84;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #fff99e;
+    --bs-btn-active-bg: #DB3838;
     --bs-btn-active-border-color: #b41e22;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff99e;
+    --bs-btn-disabled-color: #DB3838;
     --bs-btn-disabled-bg: transparent;
     --bs-btn-disabled-border-color: #b41e22;
     --bs-gradient: none

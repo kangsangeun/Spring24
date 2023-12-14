@@ -111,7 +111,7 @@ function fn_overlapped(){
 </script>
 </head>
 <body>
-	<h3>필수입력사항</h3>
+	<h3><p>필수입력사항</p></h3>
 	<form action="${contextPath}/member/addMember.do" method="post">	
 	<div id="detail_table">
 		<table>
