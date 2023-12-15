@@ -74,20 +74,15 @@
 				<input type="password" class="form-control" id="inputPassword6" name="member_pw" placeholder="비밀번호">
 			</div>
 
-			<br>
-
-			<div class="d-grid gap-2 col-6 mx-auto form-css01">
+			<div class="d-grid gap-2 col-6 mx-auto form-css01 form-css03">
 				<input type="submit" class="btn btn-primary" value="로그인">
 				<%--<input type="button" class="btn btn-primary" value="회원가입">--%>
-				<a href="${contextPath}/member/memberForm.do" class="btn btn-primary" value="회원가입">회원가입</a>
+				<a href="${contextPath}/member/memberForm.do" class="btn btn-primary form-css02" value="회원가입">회원가입</a>
 			</div>
 
-		<%--	<input ype="submit" value="로그인"> <input type="button" value="초기화">--%>
-
-			<br>
-			<br>
-
-			<a href="#">아이디찾기</a> | <a href="#">비밀번호 찾기</a> | <a href="${contextPath}/member/addMember.do">회원가입</a> | <a href="#">고객센터</a>
+			<div class="form-css01 form-css03">
+				<a href="#">아이디 찾기</a> &nbsp&nbsp | &nbsp&nbsp <a href="#">비밀번호 찾기</a>
+			</div>
 		</form>
 	</div>
 </body>

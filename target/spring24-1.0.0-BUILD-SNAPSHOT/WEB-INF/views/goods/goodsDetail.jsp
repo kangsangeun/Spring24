@@ -9,20 +9,22 @@
 <c:set var="goods" value="${goodsMap.goodsVO}" />
 <c:set var="imageList" value="${goodsMap.imageList }" />
 
- <%
-     //치환 변수 선언합니다.
-      //pageContext.setAttribute("crcn", "\r\n"); //개행문자
-      pageContext.setAttribute("crcn" , "\n"); //Ajax로 변경 시 개행 문자 
-      pageContext.setAttribute("br", "<br/>"); //br 태그
+<%
+	//치환 변수 선언합니다.
+	//pageContext.setAttribute("crcn", "\r\n");		//개행문자
+	pageContext.setAttribute("crcn" , "\n");		//Ajax로 변경 시 개행 문자
+	pageContext.setAttribute("br", "<br/>");		//br 태그
 %>
 
-<!--**********************************************************************************************************************************-->
+
 <html>
+<!------------------------------------------------------------------------------------------------------------------------------------[ HEAD ]-->
 <head>
-<!--____________________________________________________________________________________________________[ CSS ]-->
+<!--────────────────────────────────────────────────────────────────────────────────────────────────────[ CSS ]-->
 <!--──────────────────────────────────────────────────[↓ 부트스트랩/기본 ]-->
 <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="${contextPath}/resources/css/main.css" rel="stylesheet">
+
 <!--──────────────────────────────────────────────────[↓ 구글 폰트 ]-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +57,7 @@
 		}
 	</style>
 
-<!--____________________________________________________________________________________________________[ JavaScript ]-->
+<!--────────────────────────────────────────────────────────────────────────────────────────────────────[ JavaScript ]-->
 <!--──────────────────────────────────────────────────[↓ 부트스트랩 ]-->
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
  integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
@@ -65,14 +67,14 @@
 	function add_cart(goods_id) {
 		$.ajax({
 			type : "post",
-			async : false, //false인 경우 동기식으로 처리한다.
+			async : false,		//false인 경우 동기식으로 처리한다.
 			url : "${contextPath}/cart/addGoodsInCart.do",
 			data : {
 				goods_id:goods_id
 			},
 			success : function(data, textStatus) {
 				//alert(data);
-			//	$('#message').append(data);
+				//$('#message').append(data);
 				if(data.trim()=='add_success') {
 					imagePopup('open', '.layer01');	
 				} else if(data.trim()=='already_existed'){
@@ -85,7 +87,7 @@
 			complete : function(data, textStatus) {
 				//alert("작업을완료 했습니다");
 			}
-		}); //end ajax	
+		});		//end ajax
 	}
 
 	function imagePopup(type) {
@@ -105,7 +107,7 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 	var _isLogOn=document.getElementById("isLogOn");
 	var isLogOn=_isLogOn.value;
 	if(isLogOn=="false" || isLogOn=='' ) {
-		alert("로그인 후 주문이 가능합니다!!!");
+		alert("로그인 후 주문이 가능합니다");
 	}
 		var total_price,final_total_price;
 		var order_goods_qty=document.getElementById("order_goods_qty");
@@ -142,7 +144,8 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 </script>
 </head>
 
-<!--**********************************************************************************************************************************-->
+
+<!------------------------------------------------------------------------------------------------------------------------------------[ BODY ]-->
 <body>
 	<hgroup>
 		<h1>&#62;&#62;카테고리명</h1>
