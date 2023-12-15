@@ -7,7 +7,7 @@
 
 <!------------------------------------------------------------------------------------------------------------------------------------[ HEAD ]-->
 <head>
-<!--____________________________________________________________________________________________________[ CSS ]-->
+<!--────────────────────────────────────────────────────────────────────────────────────────────────────[ CSS ]-->
 <!--──────────────────────────────────────────────────[↓ 부트스트랩/기본 ]-->
 	<link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 	<link href="${contextPath}/resources/css/main.css" rel="stylesheet">
@@ -17,7 +17,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&family=Orbit&display=swap" rel="stylesheet">
 
-<!--____________________________________________________________________________________________________[ JavaScript ]-->
+<!--────────────────────────────────────────────────────────────────────────────────────────────────────[ JavaScript ]-->
 <!--──────────────────────────────────────────────────[↓ 부트스트랩 ]-->
    	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 	 integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
@@ -65,7 +65,6 @@
 				href="${contextPath}/member/addMember.do">회원가입</a> | <a href="#">고객
 				센터</a>
 		</form> --%>
-
 	<div id="testing">
 		<form action="${contextPath}/member/login.do" method="post">
 			<div class="mb-3 form-css01">
@@ -75,20 +74,15 @@
 				<input type="password" class="form-control" id="inputPassword6" name="member_pw" placeholder="비밀번호">
 			</div>
 
-			<br>
-
-			<div class="d-grid gap-2 col-6 mx-auto form-css01">
+			<div class="d-grid gap-2 col-6 mx-auto form-css01 form-css03">
 				<input type="submit" class="btn btn-primary" value="로그인">
 				<%--<input type="button" class="btn btn-primary" value="회원가입">--%>
-				<a href="${contextPath}/member/memberForm.do" class="btn btn-primary" value="회원가입">회원가입</a>
+				<a href="${contextPath}/member/memberForm.do" class="btn btn-primary form-css02" value="회원가입">회원가입</a>
 			</div>
 
-		<%--	<input ype="submit" value="로그인"> <input type="button" value="초기화">--%>
-
-			<br>
-			<br>
-
-			<a href="#">아이디찾기</a> | <a href="#">비밀번호 찾기</a> | <a href="${contextPath}/member/addMember.do">회원가입</a> | <a href="#">고객센터</a>
+			<div class="form-css01 form-css03">
+				<a href="#">아이디 찾기</a> &nbsp&nbsp | &nbsp&nbsp <a href="#">비밀번호 찾기</a>
+			</div>
 		</form>
 	</div>
 </body>
