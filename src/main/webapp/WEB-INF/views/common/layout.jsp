@@ -8,35 +8,26 @@
   request.setCharacterEncoding("utf-8");
 %>
 
-<head>
 
+<!------------------------------------------------------------------------------------------------------------------------------------[ HEAD ]-->
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<link href="${contextPath}/resources/css/main.css" rel="stylesheet"
-	type="text/css" media="screen">
-<link href="${contextPath}/resources/css/basic-jquery-slider.css"
-	rel="stylesheet" type="text/css" media="screen">
-<link href="${contextPath}/resources/css/mobile.css" rel="stylesheet"
-	type="text/css">
-	
-	
-<script src="${contextPath}/resources/jquery/jquery-1.6.2.min.js"
-	type="text/javascript"></script>
-<script src="${contextPath}/resources/jquery/jquery.easing.1.3.js"
-	type="text/javascript"></script>
-	
-	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
- integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
- crossorigin="anonymous"></script>
-	
-<%-- <script src="${contextPath}/resources/jquery/stickysidebar.jquery.js"
-	type="text/javascript"></script> --%>
-<script src="${contextPath}/resources/jquery/basic-jquery-slider.js"
-	type="text/javascript"></script>
-<script src="${contextPath}/resources/jquery/tabs.js"
-	type="text/javascript"></script>
-<script src="${contextPath}/resources/jquery/carousel.js"
-	type="text/javascript"></script>
+<!--────────────────────────────────────────────────────────────────────────────────────────────────────[ CSS ]-->
+<link href="${contextPath}/resources/css/main.css" rel="stylesheet" type="text/css" media="screen">
+<link href="${contextPath}/resources/css/basic-jquery-slider.css" rel="stylesheet" type="text/css" media="screen">
+<link href="${contextPath}/resources/css/mobile.css" rel="stylesheet" type="text/css">
+
+<!--────────────────────────────────────────────────────────────────────────────────────────────────────[ JavaScript ]-->
+<script src="${contextPath}/resources/jquery/jquery-1.6.2.min.js" type="text/javascript"></script>
+<script src="${contextPath}/resources/jquery/jquery.easing.1.3.js" type="text/javascript"></script>
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		   integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<%-- <script src="${contextPath}/resources/jquery/stickysidebar.jquery.js" type="text/javascript"></script> --%>
+<script src="${contextPath}/resources/jquery/basic-jquery-slider.js" type="text/javascript"></script>
+<script src="${contextPath}/resources/jquery/tabs.js" type="text/javascript"></script>
+<script src="${contextPath}/resources/jquery/carousel.js" type="text/javascript"></script>
+
 <script>
 	// 슬라이드 
 	$(document).ready(function() {
@@ -61,6 +52,8 @@
 <title><tiles:insertAttribute name="title" /></title>
 </head>
 
+
+<!------------------------------------------------------------------------------------------------------------------------------------[ BODY ]-->
 <body>
 	<div id="outer_wrap">
 		<div id="wrap">
