@@ -40,7 +40,7 @@
 		}
 		
 		#popup {
-			z-index: 3;
+/*			z-index: 3;
 			position: fixed;
 			text-align: center;
 			left: 50%;
@@ -48,7 +48,17 @@
 			width: 300px;
 			height: 200px;
 			background-color: #ccffff;
-			border: 3px solid #87cb42;
+			border: 3px solid #87cb42;*/
+			z-index: 3;
+			position: fixed;
+			text-align: center;
+			left: 48.35%;
+			top: 485px;
+			width: 280px;
+			height: 120px;
+			background-color: #ffffff;
+			border: 1px solid #b41e22;
+			border-radius: 10px;
 		}
 
 		#close {
@@ -62,7 +72,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
  integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
  crossorigin="anonymous"></script>
- 
+
 <script type="text/javascript">
 	function add_cart(goods_id) {
 		$.ajax({
@@ -148,10 +158,31 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 <!------------------------------------------------------------------------------------------------------------------------------------[ BODY ]-->
 <body>
 	<hgroup>
-		<h1>&#62;&#62;카테고리명</h1>
-<!-- 		<h2>국내외 도서 &gt; 컴퓨터와 인터넷 &gt; 웹 개발</h2> -->
-		<h3>${goods.goods_title }</h3>
-		<h4>${goods.goods_writer} &nbsp; ${goods.goods_publisher}</h4>
+		<h1><a href="${contextPath}/main/main.do">홈</a></h1>
+		<h1>&#62;</h1>
+		<c:choose>
+			<c:when test="${goods.goods_status eq 'sandwich'}">
+				<h1><a href="${contextPath}/goods/selectGoodsList.do?category=sandwich">도시락/샌드위치</a></h1>
+			</c:when>
+			<c:when test="${goods.goods_status eq 'noodle'}">
+				<h1><a href="${contextPath}//goods/selectGoodsList.do?category=noodle">라면/면류</a></h1>
+			</c:when>
+			<c:when test="${goods.goods_status eq 'dairy'}">
+				<h1><a href="${contextPath}/goods/selectGoodsList.do?category=dairy">유제품</a></h1>
+			</c:when>
+			<c:when test="${goods.goods_status eq 'drink'}">
+				<h1><a href="${contextPath}/goods/selectGoodsList.do?category=drink">음료</a></h1>
+			</c:when>
+			<c:when test="${goods.goods_status eq 'snack'}">
+				<h1><a href="${contextPath}/goods/selectGoodsList.do?category=snack">스낵</a></h1>
+			</c:when>
+			<c:when test="${goods.goods_status eq 'etc'}">
+				<h1><a href="${contextPath}/goods/selectGoodsList.do?category=etc">생활잡화</a></h1>
+			</c:when>
+			<c:otherwise>>
+				<h1></h1>
+			</c:otherwise>
+		</c:choose>
 	</hgroup>
 	
 	<div id="goods_image">
@@ -162,6 +193,7 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 	</div>
 	<div id="detail_table">
 		<table>
+			<h3>${goods.goods_title }</h3>
 			<tbody>
 				<tr>
 					<td class="fixed">정가</td>
@@ -184,7 +216,7 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 					<td class="fixed">포인트 추가적립</td>
 					<td class="fixed">만원이상 구매시 1,000P, 5만원이상 구매시 2,000P추가적립 편의점 배송 이용시 300P 추가적립</td>
 				</tr>
-				<tr>
+				<%--<tr>
 					<td class="fixed">발행일</td>
 					<td class="fixed">
 					   <c:set var="pub_date" value="${goods.goods_published_date}" />
@@ -199,7 +231,7 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 				<tr class="dot_line">
 					<td class="fixed">ISBN</td>
 					<td class="fixed">${goods.goods_isbn}</td>
-				</tr>
+				</tr>--%>
 				<tr>
 					<td class="fixed">배송료</td>
 					<td class="fixed"><strong>무료</strong></td>
@@ -216,22 +248,38 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 				<tr>
 					<td class="fixed">수량</td>
 					<td class="fixed">
-			      <select style="width: 60px;" id="order_goods_qty">
-				      <option>1</option>
+						<select style="width: 60px;" id="order_goods_qty">
+				     		<option>1</option>
 							<option>2</option>
 							<option>3</option>
 							<option>4</option>
 							<option>5</option>
-			     </select>
-					 </td>
+						</select>
+
+
+<%--					<div class="prod-buy__quantity">
+						<div class="prod-quantity__form">
+							<input type="text" value="1" class="prod-quantity__input" maxlength="6" autocomplete="off">
+							<div style="display:table-cell;vertical-align:top;">
+								<button class="prod-quantity__plus" type="button">수량빼기</button>
+								<button class="prod-quantity__minus" type="button">수량더하기</button>
+							</div>
+						</div>
+					</div>--%>
+
+
+
+
+					</td>
 				</tr>
 			</tbody>
 		</table>
 		<ul>
-			<li><a class="buy" href="javascript:fn_order_each_goods('${goods.goods_id }','${goods.goods_title }','${goods.goods_sales_price}','${goods.goods_fileName}');">구매하기 </a></li>
-			<li><a class="cart" href="javascript:add_cart('${goods.goods_id }')">장바구니</a></li>
-			
-			<li><a class="wish" href="#">위시리스트</a></li>
+			<li><a class="buy btn btn-primary" href="javascript:fn_order_each_goods('${goods.goods_id }','${goods.goods_title }','${goods.goods_sales_price}','${goods.goods_fileName}')" role="button">구매하기</a></li>
+			<li><a class="cart btn btn-primary" href="javascript:add_cart('${goods.goods_id }')" role="button">장바구니</a></li>
+<%--			<li><a class="buy" href="javascript:fn_order_each_goods('${goods.goods_id }','${goods.goods_title }','${goods.goods_sales_price}','${goods.goods_fileName}');">구매하기 </a></li>--%>
+<%--			<li><a class="cart" href="javascript:add_cart('${goods.goods_id }')">장바구니</a></li>--%>
+<%--			<li><a class="wish" href="#">위시리스트</a></li>--%>
 		</ul>
 	</div>
 	<div class="clear"></div>
@@ -258,11 +306,11 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 				<p>
 				<div class="writer">저자 : ${goods.goods_writer}</div>
 				 <p>${fn:replace(goods.goods_writer_intro,crcn,br) }</p> 
-				
+
 			</div>
 			<div class="tab_content" id="tab3">
 				<h4>책목차</h4>
-				<p>${fn:replace(goods.goods_contents_order,crcn,br)}</p> 
+				<p>${fn:replace(goods.goods_contents_order,crcn,br)}</p>
 			</div>
 			<div class="tab_content" id="tab4">
 				<h4>출판사서평</h4>
@@ -282,12 +330,20 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 		<!-- visibility:hidden 으로 설정하여 해당 div안의 모든것들을 가려둔다. -->
 		<div id="popup">
 			<!-- 팝업창 닫기 버튼 -->
-			<a href="javascript:" onClick="javascript:imagePopup('close', '.layer01');"> <img
-				src="${contextPath}/resources/image/close.png" id="close" />
-			</a> <br /> <font size="12" id="contents">장바구니에 담았습니다.</font><br>
-<form   action='${contextPath}/cart/myCartList.do'  >				
-		<input  type="submit" value="장바구니 보기">
-</form>	
+			<a href="javascript:" onClick="javascript:imagePopup('close', '.layer01');"><img src="${contextPath}/resources/image/close.png" id="close" /></a>
+
+			<br>
+
+			<p id="contents">상품이 장바구니에 담겼습니다.</p>
+
+			<form id="cart_btn" action='${contextPath}/cart/myCartList.do'>
+				<input type="submit" class="btn btn-primary" value="장바구니 보기">
+
+				<br>
+
+			</form>
+		</div>
+	</div>
 </body>
 </html>
 <input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}"/>

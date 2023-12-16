@@ -207,6 +207,16 @@ article {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+hgroup h1,
+hgroup h2 {
+	display: inline;
+	margin-right: 10px;
+}
+#cart_btn .btn-primary {
+	width: 100px;
+	height: 40px;
+	font-size: 12.5px;
+}
 
 
 /*____________________________________________________________________________________________________[ ARTICLE ]*/
@@ -219,7 +229,7 @@ article #ad_sub_banner {
 }
 
 article hgroup {
-	margin: 10px 0px;
+	margin: 10px 10vw 40px;
 }
 
 article h1 {
@@ -227,9 +237,6 @@ article h1 {
 	color: rgb(50, 50, 50);
 	letter-spacing: 2px;
 	font-size: 1.1em;
-	border-bottom-color: rgb(219, 56, 56);
-	border-bottom-width: 4px;
-	border-bottom-style: solid;
 }
 
 article h2 {
@@ -406,6 +413,9 @@ article h3 {
 	font-weight: 800;
 	margin-top: 50px;
 }
+#detail_table h3 {
+	margin-top: 0px;
+}
 article h4 {
 	font-size: 0.8em; font-weight: normal;
 	margin-left: 67vw;
@@ -430,7 +440,7 @@ article h4 {
 	/* box-shadow: 2px 2px 25px #666; */
 }
 #detail_table {
-	width: 800px; font-size: 0.75em; float: right; margin-right: 17vw;
+	width: 600px; font-size: 0.75em; float: left;
 }
 #detail_table table {
 	width: 95%; border-top-color: rgb(51, 51, 51); border-bottom-color: rgb(51, 51, 51); border-top-width: 2px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; border-collapse: collapse;
@@ -449,7 +459,7 @@ article h4 {
 	font-size: 1.2em; font-weight: bold;
 }
 #detail_table table td.fixed {
-	width: 110px; font-weight: bold;font-size: 0.8em;
+	width: 25px; font-weight: bold;font-size: 0.8em;
 }
 
 #detail_table table td.fixed_join {
@@ -458,12 +468,25 @@ article h4 {
 
 #detail_table ul {
 	list-style: none; margin: 20px 0px 0px;
+	display: flex;
+	justify-content: center;
 }
 #detail_table ul li {
 	padding: 0px 10px; float: left;
 }
 #detail_table ul li a {
-	border-radius: 5px; border: 2px solid rgb(153, 153, 153); border-image: none; width: 150px; height: 25px; text-align: center; padding-top: 7px; font-size: 1.2em; font-weight: bold; display: block;
+	/*삭제		#border-radius: 5px;
+	border: 2px solid rgb(153, 153, 153);
+	border-image: none;*/
+	width: 150px;
+	/*삭제		#height: 25px;
+	text-align: center;*/
+	padding-top: 12px;
+	font-size: 1.2em;
+	font-weight: bold;
+	/*삭제		#display: block;*/
+	display: flex;
+	justify-content: center;
 }
 #detail_table ul li a.buy {
 	background-position: 15px; background-repeat: no-repeat;
@@ -474,16 +497,16 @@ article h4 {
 #detail_table ul li a.wish {
 	background-position: 15px; background-repeat: no-repeat;
 }
-#detail_table ul li a.buy {
+/*삭제		#detail_table ul li a.buy {
 	border-color: rgb(255, 0, 0); color: rgb(255, 0, 0); background-image: url("../imgs/check.png");
-}
+}*/
 #detail_table ul li a.cart {
 	background-image: url("../imgs/cart.png");
 }
 #detail_table ul li a.wish {
 	background-image: url("../imgs/wish.png");
 }
-#detail_table ul li a.buy:hover {
+/*삭제		##detail_table ul li a.buy:hover {
 	color: rgb(0, 0, 0); background-color: rgb(255, 204, 0);
 }
 #detail_table ul li a.cart:hover {
@@ -491,7 +514,7 @@ article h4 {
 }
 #detail_table ul li a.wish:hover {
 	color: rgb(0, 0, 0); background-color: rgb(255, 204, 0);
-}
+}*/
 #container {
 	margin: 40px auto; width: 100%;
 }
@@ -539,9 +562,35 @@ footer {
 	background-position: top; margin: 10px 0px 0px; font-size: 0.75em; background-image: url("../imgs/foo_back.gif"); background-repeat: repeat-x;
 }
 
-footer ul {
-	list-style: none; margin: 0px 0px 0px 210px;
+footer ul,
+footer a,
+footer div {
+	list-style: none; /*margin: 0px 0px 0px 210px;*/
+	display: flex;
+	justify-content: center;
 }
+
+footer ul {
+	padding-top: 10px;
+	border-top: solid 1px;
+	border-top-color: rgba(50, 50, 50, .2);
+}
+
+footer ul li {
+	border-right: solid 1px;
+	border-right-color: rgba(50, 50, 50, .2);
+}
+
+footer ul li:last-child {
+	border-right: none;
+}
+
+/*footer a,
+footer div {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}*/
 
 footer ul li {
 	background-position: right; float: left; background-image: url("../imgs/foot_line.gif"); background-repeat: no-repeat;
@@ -556,7 +605,7 @@ footer ul li a {
 }
 
 footer img {
-	margin: 10px 0px 0px 40px; width: 150px; float: left;
+	/*margin: 10px 0px 0px 40px; width: 150px; float: left;*/
 }
 
 
@@ -729,7 +778,7 @@ article h1_TITLE {
 }
 .main_book h3 {
 	margin: 0px 0px 25px;
-	padding: 0px 0px 5px;
+	padding: 0px 0px 10px;
 	color: rgb(50, 50, 50);
 	text-transform: uppercase;
 	font-size: 1.6em;
@@ -787,4 +836,8 @@ display:none; position: absolute; left: 830px; top:80px; border: 0.1px  solid #8
 
 .del_row_line{
 	margin: 0px; padding: 10px 0px; border-bottom-color: rgb(153, 153, 153); border-bottom-width: 1px;     border-bottom-style: none;border-top-style:solid; border-top-width: 1px;border-top-color:#ffffff;
+}
+
+#contents {
+	font-size: 18px;
 }
