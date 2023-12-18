@@ -23,7 +23,7 @@ public class CartServiceImpl  implements CartService{
 	public Map<String ,List> myCartList(CartVO cartVO) throws Exception{
 		Map<String,List> cartMap=new HashMap<String,List>();
 		List<CartVO> myCartList=cartDAO.selectCartList(cartVO);
-		if(myCartList.size()==0){ //Ä«Æ®¿¡ ÀúÀåµÈ »óÇ°ÀÌ¾ø´Â °æ¿ì
+		if(myCartList.size()==0){ //Ä«Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 			return null;
 		}
 		List<GoodsVO> myGoodsList=cartDAO.selectGoodsList(myCartList);
@@ -40,10 +40,6 @@ public class CartServiceImpl  implements CartService{
 		
 	}	
 	public void addGoodsInCart(CartVO cartVO) throws Exception{
-		
-		
-		
-		
 		cartDAO.insertGoodsInCart(cartVO);
 	}
 	

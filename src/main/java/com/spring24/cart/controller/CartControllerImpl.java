@@ -26,7 +26,7 @@ import com.spring24.member.vo.MemberVO;
 
 @Controller("cartController")
 @RequestMapping(value="/cart")
-public class CartControllerImpl extends BaseController implements CartController{
+public class CartControllerImpl extends BaseController implements CartController {
 	@Autowired
 	private CartService cartService;
 	@Autowired
@@ -35,7 +35,6 @@ public class CartControllerImpl extends BaseController implements CartController
 	private MemberVO memberVO;
 	
 	@RequestMapping(value="/myCartList.do" ,method = RequestMethod.GET)
-	
 	public ModelAndView myCartMain(HttpServletRequest request, HttpServletResponse response)  throws Exception {
 		String viewName=(String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
@@ -43,22 +42,25 @@ public class CartControllerImpl extends BaseController implements CartController
 		MemberVO memberVO=(MemberVO)session.getAttribute("memberInfo");
 		String member_id=memberVO.getMember_id();
 		cartVO.setMember_id(member_id);
-		Map<String ,List> cartMap=cartService.myCartList(cartVO);
-		session.setAttribute("cartMap", cartMap);//Àå¹Ù±¸´Ï ¸ñ·Ï È­¸é¿¡¼­ »óÇ° ÁÖ¹® ½Ã »ç¿ëÇÏ±â À§ÇØ¼­ Àå¹Ù±¸´Ï ¸ñ·ÏÀ» ¼¼¼Ç¿¡ ÀúÀåÇÑ´Ù.
+		Map<String, List> cartMap=cartService.myCartList(cartVO);
+		session.setAttribute("cartMap", cartMap);//ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ È­ï¿½é¿¡ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½Ö¹ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		//mav.addObject("cartMap", cartMap);
+
 		return mav;
 	}
 	@RequestMapping(value="/addGoodsInCart.do" ,method = RequestMethod.POST,produces = "application/text; charset=utf8")
 	public  @ResponseBody String addGoodsInCart(@RequestParam("goods_id") int goods_id,
-			                    HttpServletRequest request, HttpServletResponse response)  throws Exception{
+												@RequestParam("cart_goods_qty") int cart_goods_qty,
+			                   					HttpServletRequest request, HttpServletResponse response)  throws Exception {
 		HttpSession session=request.getSession();
+
 		memberVO=(MemberVO)session.getAttribute("memberInfo");
 		String member_id=memberVO.getMember_id();
 		
-		cartVO.setMember_id(member_id);
-		//Ä«Æ® µî·ÏÀü¿¡ ÀÌ¹Ì µî·ÏµÈ Á¦Ç°ÀÎÁö ÆÇº°ÇÑ´Ù.
 		cartVO.setGoods_id(goods_id);
 		cartVO.setMember_id(member_id);
+		cartVO.setCart_goods_qty(cart_goods_qty);
+
 		boolean isAreadyExisted=cartService.findCartGoods(cartVO);
 		System.out.println("isAreadyExisted:"+isAreadyExisted);
 		if(isAreadyExisted==true){
@@ -72,13 +74,16 @@ public class CartControllerImpl extends BaseController implements CartController
 	@RequestMapping(value="/modifyCartQty.do" ,method = RequestMethod.POST)
 	public @ResponseBody String  modifyCartQty(@RequestParam("goods_id") int goods_id,
 			                                   @RequestParam("cart_goods_qty") int cart_goods_qty,
-			                                    HttpServletRequest request, HttpServletResponse response)  throws Exception{
+			                                   HttpServletRequest request, HttpServletResponse response)  throws Exception {
 		HttpSession session=request.getSession();
+
 		memberVO=(MemberVO)session.getAttribute("memberInfo");
 		String member_id=memberVO.getMember_id();
+
 		cartVO.setGoods_id(goods_id);
 		cartVO.setMember_id(member_id);
 		cartVO.setCart_goods_qty(cart_goods_qty);
+
 		boolean result=cartService.modifyCartQty(cartVO);
 		
 		if(result==true){
@@ -86,19 +91,15 @@ public class CartControllerImpl extends BaseController implements CartController
 		}else{
 			  return "modify_failed";	
 		}
-		
 	}
 	
 	@RequestMapping(value="/removeCartGoods.do" ,method = RequestMethod.POST)
 	public ModelAndView removeCartGoods(@RequestParam("cart_id") int cart_id,
-			                          HttpServletRequest request, HttpServletResponse response)  throws Exception{
+			                         	HttpServletRequest request, HttpServletResponse response)  throws Exception {
 		ModelAndView mav=new ModelAndView();
 		cartService.removeCartGoods(cart_id);
 		mav.setViewName("redirect:/cart/myCartList.do");
-	
-		
-		
-		
+
 		return mav;
 	}
 }
