@@ -117,7 +117,8 @@ public class OrderControllerImpl extends BaseController implements OrderControll
 		MemberVO memberVO=(MemberVO)session.getAttribute("orderer");
 		String member_id=memberVO.getMember_id();
 		String orderer_name=memberVO.getMember_name();
-		String orderer_hp = memberVO.getHp1()+"-"+memberVO.getHp2()+"-"+memberVO.getHp3();
+//		String orderer_hp = memberVO.getHp1()+"-"+memberVO.getHp2()+"-"+memberVO.getHp3();
+		String orderer_hp = memberVO.getHp1();
 		List<OrderVO> myOrderList=(List<OrderVO>)session.getAttribute("myOrderList");
 		
 		for(int i=0; i<myOrderList.size();i++){
@@ -127,11 +128,11 @@ public class OrderControllerImpl extends BaseController implements OrderControll
 			orderVO.setReceiver_name(receiverMap.get("receiver_name"));
 			
 			orderVO.setReceiver_hp1(receiverMap.get("receiver_hp1"));
-			orderVO.setReceiver_hp2(receiverMap.get("receiver_hp2"));
-			orderVO.setReceiver_hp3(receiverMap.get("receiver_hp3"));
-			orderVO.setReceiver_tel1(receiverMap.get("receiver_tel1"));
-			orderVO.setReceiver_tel2(receiverMap.get("receiver_tel2"));
-			orderVO.setReceiver_tel3(receiverMap.get("receiver_tel3"));
+//			orderVO.setReceiver_hp2(receiverMap.get("receiver_hp2"));
+//			orderVO.setReceiver_hp3(receiverMap.get("receiver_hp3"));
+//			orderVO.setReceiver_tel1(receiverMap.get("receiver_tel1"));
+//			orderVO.setReceiver_tel2(receiverMap.get("receiver_tel2"));
+//			orderVO.setReceiver_tel3(receiverMap.get("receiver_tel3"));
 			
 			orderVO.setDelivery_address(receiverMap.get("delivery_address"));
 			orderVO.setDelivery_message(receiverMap.get("delivery_message"));
