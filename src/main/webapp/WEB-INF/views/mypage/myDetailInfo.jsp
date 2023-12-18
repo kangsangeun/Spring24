@@ -48,9 +48,9 @@
                     var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
                     document.getElementById('guide').innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
 
-                } else if(data.autoJibunAddress) {
+               /*  } else if(data.autoJibunAddress) {
                     var expJibunAddr = data.autoJibunAddress;
-                    document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')'; */
 
                 } else {
                     document.getElementById('guide').innerHTML = '';
@@ -334,7 +334,7 @@ function fn_modify_member_info(attribute){
 					  <input type="button" value="수정하기" onClick="fn_modify_member_info('member_birth')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
+			<%-- 	<tr class="dot_line">
 					<td class="fixed_join">전화번호</td>
 					<td>
 					    <select  name="tel1" id="tel1"  >
@@ -369,22 +369,12 @@ function fn_modify_member_info(attribute){
 					</td>
 					<td>
 					  <input type="button" value="수정하기" onClick="fn_modify_member_info('tel')" />
-					</td>
-				</tr>
+					</td> 
+				</tr> --%>
 				<tr class="dot_line">
 					<td class="fixed_join">휴대폰번호</td>
 					<td>
-					   <select  name="hp1" id="hp1">
-							<option>없음</option>
-							<option value="010">010</option>
-							<option value="011">011</option>
-							<option value="016">016</option>
-							<option value="017">017</option>
-							<option value="018">018</option>
-							<option value="019">019</option>
-					</select> 
-					 - <input type="text" name="hp2" size=4 value="${memberInfo.hp2 }"> 
-					 - <input type="text"name="hp3"  size=4 value="${memberInfo.hp3 }"><br> <br>
+					 <input name="h_tel1"  type ="text" value="${memberInfo.hp1}"><br> <br>
 					 <c:choose> 
 					   <c:when test="${memberInfo.smssts_yn=='true' }">
 					     <input type="checkbox"  name="smssts_yn" value="Y" checked /> 쇼핑몰에서 발송하는 SMS 소식을 수신합니다.
@@ -435,7 +425,7 @@ function fn_modify_member_info(attribute){
 					   <input type="text" id="zipcode" name="zipcode" size=5 value="${memberInfo.zipcode }" > <a href="javascript:execDaumPostcode()">우편번호검색</a>
 					  <br>
 					  <p> 
-					   지번 주소:<br><input type="text" id="roadAddress"  name="roadAddress" size="50" value="${memberInfo.roadAddress }"><br><br>
+					<%--    지번 주소:<br><input type="text" id="roadAddress"  name="roadAddress" size="50" value="${memberInfo.roadAddress }"><br><br> --%>
 					  도로명 주소: <input type="text" id="jibunAddress" name="jibunAddress" size="50" value="${memberInfo.jibunAddress }"><br><br>
 					  나머지 주소: <input type="text"  name="namujiAddress" size="50" value="${memberInfo.namujiAddress }" />
 					   </p>
