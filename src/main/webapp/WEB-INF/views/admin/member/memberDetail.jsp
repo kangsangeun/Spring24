@@ -167,7 +167,9 @@ function fn_modify_member_info(member_id,mod_type){
 			}
 			//alert("생년 양음년 "+value_gn);
 			value=+value_y+","+value_m+","+value_d+","+value_gn;
-		}else if(mod_type=='tel'){
+		}
+		//전화번호 부분 삭제
+/* 		else if(mod_type=='tel'){
 			var tel1=frm_mod_member.tel1;
 			var tel2=frm_mod_member.tel2;
 			var tel3=frm_mod_member.tel3;
@@ -181,11 +183,11 @@ function fn_modify_member_info(member_id,mod_type){
 			value_tel2=tel2.value;
 			value_tel3=tel3.value;
 			
-			value=value_tel1+","+value_tel2+", "+value_tel3;
+			value=value_tel1+","+value_tel2+", "+value_tel3; */
 		}else if(mod_type=='hp'){
 			var hp1=frm_mod_member.hp1;
-			var hp2=frm_mod_member.hp2;
-			var hp3=frm_mod_member.hp3;
+/* 			var hp2=frm_mod_member.hp2;
+			var hp3=frm_mod_member.hp3; */
 			var smssts_yn=frm_mod_member.smssts_yn;
 			
 			for(var i=0; hp1.length;i++){
@@ -194,11 +196,12 @@ function fn_modify_member_info(member_id,mod_type){
 					break;
 				} 
 			}
-			value_hp2=hp2.value;
-			value_hp3=hp3.value;
+/* 			value_hp2=hp2.value;
+			value_hp3=hp3.value; */
 			value_smssts_yn=smssts_yn.checked;
 			
-			value=value_hp1+","+value_hp2+", "+value_hp3+","+value_smssts_yn;
+	/* 		value=value_hp1+","+value_hp2+", "+value_hp3+","+value_smssts_yn; */
+			value=value_hp1+value_smssts_yn;
 			
 		}else if(mod_type=='email'){
 			var email1=frm_mod_member.email1;
@@ -228,7 +231,8 @@ function fn_modify_member_info(member_id,mod_type){
 		$.ajax({
 			type : "post",
 			async : false, //false인 경우 동기식으로 처리한다.
-			url : "http://localhost:8090/bookshop01/admin/member/modifyMemberInfo.do",
+			//요청주소가  "http://localhost:8090/bookshop01/admin/member/modifyMemberInfo.do"로 되어있었어요!!
+			url : "http://localhost:8090/spring24/admin/member/modifyMemberInfo.do",
 			data : {
 				member_id:member_id,
 				mod_type:mod_type,
@@ -266,7 +270,7 @@ function fn_delete_member(member_id ,del_yn){
     frm_mod_member.appendChild(i_member_id);
     frm_mod_member.appendChild(i_del_yn);
     frm_mod_member.method="post";
-    frm_mod_member.action="/bookshop01/admin/member/deleteMember.do";
+    frm_mod_member.action="/spring24/admin/member/deleteMember.do";
     frm_mod_member.submit();
 }
 </script>
@@ -384,7 +388,8 @@ function fn_delete_member(member_id ,del_yn){
 					  <input type="button" value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','member_birth')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
+				<!-- 전화번호 필요 X  -->
+				<%-- <tr class="dot_line">
 					<td class="fixed_join">전화번호</td>
 					<td>
 					    <select  name="tel1" >
@@ -420,21 +425,12 @@ function fn_delete_member(member_id ,del_yn){
 					<td>
 					  <input type="button" value="수정하기" onClick="fn_modify_member_info('${member_info.member_id }','tel')" />
 					</td>
-				</tr>
+				</tr> --%>
 				<tr class="dot_line">
 					<td class="fixed_join">휴대폰번호</td>
 					<td>
-					   <select  name="hp1">
-							<option>없음</option>
-							<option selected value="010">010</option>
-							<option value="011">011</option>
-							<option value="016">016</option>
-							<option value="017">017</option>
-							<option value="018">018</option>
-							<option value="019">019</option>
-					</select> 
-					 - <input type="text" name="hp2" size=4 value="${member_info.hp2 }"> 
-					 - <input type="text"name="hp3"  size=4 value="${member_info.hp3 }"><br> <br>
+					  <input type="text" name="hp1" size=4 value="${member_info.hp1 }"> 
+					<br> <br>
 					 <c:choose> 
 					   <c:when test="${member_info.smssts_yn=='true' }">
 					     <input type="checkbox"  name="smssts_yn" value="Y" checked /> 쇼핑몰에서 발송하는 SMS 소식을 수신합니다.
