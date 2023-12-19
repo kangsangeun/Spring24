@@ -29,44 +29,80 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+<style>
+/* 추가적인 스타일이 필요한 경우 여기에 작성. */
+.dot_line {
+	/* 여기에 dot_line 클래스에 대한 스타일을 추가. */
+	
+}
 
+.fixed_join {
+	/* 여기에 fixed_join 클래스에 대한 스타일을 추가하세요. */
+	
+}
+
+
+</style>
 </head>
 
 <body>
-	<h3>필수입력사항</h3>
-	<form action="${contextPath}/member/addMember.do" method="post">
+	<!-- <h3>필수입력사항</h3> -->
+	<form action="${contextPath}/member/addMember.do" method="post"
+		onsubmit="return canSubmitForm()">
 		<div id="detail_table">
 			<table>
 				<tbody>
 					<tr class="dot_line">
 						<td class="fixed_join">아이디</td>
-						<td><input type="text" name="_member_id" id="_member_id"
-							maxlength="16" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,16}$"
-							size="20" placeholder="아이디를 입력해주세요." value="" oninput="validID()"
-							required />
+						<td>
+							<div class="input-group">
+								<input type="text" class="form-control" name="_member_id"
+									id="_member_id" maxlength="16"
+									pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,16}" size="20"
+									placeholder="아이디를 입력해주세요." value="" oninput="validID()"
+									required />
+								<div class="input-group-append">
+									<button class="btn btn-outline-secondary" type="button"
+										id="btnOverlapped" onclick="fn_overlapped()">중복체크</button>
+								</div>
+							</div>
 							<div id="idError"></div> <input type="hidden" name="member_id"
-							id="member_id" /> <input type="button" id="btnOverlapped"
-							value="중복체크" onclick="fn_overlapped()" /></td>
+							id="member_id" />
+						</td>
 					</tr>
 					<tr class="dot_line">
 						<td class="fixed_join">비밀번호</td>
-						<td><input name="member_pw"
-							pattern="^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{8,20}$"
-							type="password" maxlength="20" size="20"
-							placeholder="비밀번호를 입력해주세요." oninput="validPW()" required />
-							<div id="pwError"></div></td>
+						<td>
+							<div class="input-group mb-3">
+								<input name="member_pw"
+									pattern="^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{8,20}$"
+									type="password" class="form-control" maxlength="20" size="20"
+									placeholder="비밀번호를 입력해주세요." oninput="validPW()" required />
+							</div>
+							<div id="pwError"></div>
+						</td>
 					</tr>
 					<tr class="dot_line">
 						<td class="fixed_join">비밀번호 확인</td>
-						<td><input name="confirm_pw" type="password" maxlength="20"
-							size="20" placeholder="비밀번호를 확인해주세요." oninput="validPW()"
-							required />
-							<div id="confirmPWError"></div></td>
+						<td>
+							<div class="input-group mb-3">
+								<input name="confirm_pw" type="password" class="form-control"
+									maxlength="20" size="20" placeholder="비밀번호를 확인해주세요."
+									oninput="validPW()" required />
+							</div>
+							<div id="confirmPWError"></div>
+						</td>
 					</tr>
 					<tr class="dot_line">
+
 						<td class="fixed_join">이름</td>
-						<td><input name="member_name" type="text" size="20"
-							placeholder="이름을 입력해주세요." required /></td>
+
+						<td>
+							<div class="input-group mb-3">
+								<input name="member_name" type="text" class="form-control"
+									size="20" placeholder="이름을 입력해주세요." required />
+							</div>
+						</td>
 					</tr>
 					<tr class="dot_line">
 						<td class="fixed_join">성별</td>
@@ -119,56 +155,67 @@
 					</tr>
 					<tr class="dot_line">
 						<td class="fixed_join">휴대폰번호</td>
-						<td><input type="text" name="hp1" placeholder="숫자만 입력해주세요."
-							oninput="validatePhoneNumber(this)" required> <br> <br>
-							<input type="checkbox" name="smssts_yn" value="Y" checked />
-							쇼핑몰에서 발송하는 SMS 소식을 수신합니다.</td>
+						<td>
+							<div class="input-group mb-3">
+								<input type="text" name="hp1" placeholder="숫자만 입력해주세요."
+									class="form-control" oninput="validatePhoneNumber(this)"
+									required>
+							</div> <input type="checkbox" name="smssts_yn" value="Y" checked />
+							쇼핑몰에서 발송하는 SMS 소식을 수신합니다.
+						</td>
 					</tr>
 					<tr class="dot_line">
 						<td class="fixed_join">이메일<br>(e-mail)
 						</td>
-						<td><input size="10px" type="text" name="email1"
-							placeholder="예 : spring24" required /> @ <input size="10px"
-							type="text" name="email2" placeholder="spring24" id="email2Input"/> <select
-							name="email_domain" id="emailDomain" onChange="updateEmail()" title="직접입력">
-								<option value="non">직접입력</option>
-								<option value="hanmail.net">hanmail.net</option>
-								<option value="naver.com">naver.com</option>
-								<option value="yahoo.co.kr">yahoo.co.kr</option>
-								<option value="hotmail.com">hotmail.com</option>
-								<option value="paran.com">paran.com</option>
-								<option value="nate.com">nate.com</option>
-								<option value="google.com">google.com</option>
-								<option value="gmail.com">gmail.com</option>
-								<option value="empal.com">empal.com</option>
-								<option value="korea.com">korea.com</option>
-								<option value="freechal.com">freechal.com</option>
-						</select><br> <br> <input type="checkbox" name="emailsts_yn"
-							value="Y" checked /> 쇼핑몰에서 발송하는 e-mail을 수신합니다.</td>
+						<td>
+							<div class="input-group flex-nowrap">
+								<input size="10px" type="text" name="email1"
+									placeholder="예: spring24" required /> @ <input size="10px"
+									type="text" name="email2" placeholder="spring24"
+									id="email2Input" /> <select class="form-select"
+									name="email_domain" id="emailDomain" onChange="updateEmail()"
+									title="직접입력">
+									<option value="non">직접입력</option>
+									<option value="hanmail.net">hanmail.net</option>
+									<option value="naver.com">naver.com</option>
+									<option value="hotmail.com">daum.com</option>
+									<option value="nate.com">nate.com</option>
+									<option value="google.com">google.com</option>
+									<option value="gmail.com">gmail.com</option>
+								</select>
+							</div> <input type="checkbox" name="emailsts_yn" value="Y" checked />
+							쇼핑몰에서 발송하는 e-mail을 수신합니다.
+						</td>
 					</tr>
 					<tr class="dot_line">
 						<td class="fixed_join">주소</td>
-						<td><input type="text" id="zipcode" name="zipcode" size="10"
-							> <a href="javascript:execDaumPostcode()">우편번호검색</a>
-							<br>
-							<p>
-<!-- 								지번 주소:<input type="text" id="roadAddress"
-									name="roadAddress" size="50">  -->
-								<br> 도로명 주소: <input type="text" id="jibunAddress"
-									name="jibunAddress" size="50"><br> <br> 나머지
-								주소: <input type="text" name="namujiAddress" size="50" />
-								
-							</p></td>
+						<td>
+							<div class="input-group mb-3">
+								<input type="text" id="zipcode" name="zipcode" size="10"
+									class="form-control"> <a
+									href="javascript:execDaumPostcode()" class="input-group-text">우편번호검색</a>
+							</div>
+							<div class="input-group input-group-sm mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-sm">도로명
+									주소 : </span> <input type="text" id="jibunAddress" name="jibunAddress"
+									size="50" class="form-control">
+							</div>
+							<div class="input-group input-group-sm mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-sm">나머지
+									주소 : </span> <input type="text" name="namujiAddress" size="50"
+									class="form-control" />
+							</div>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div class="clear">
 			<br> <br>
-			<table align=center>
+			<table style="margin: auto;">
 				<tr>
-					<td><input type="submit" value="회원 가입"> <input
-						type="reset" value="다시입력"></td>
+					<td><input type="submit" value="회원 가입"> <!--  <input type="reset" value="다시입력"> -->
+					</td>
 
 				</tr>
 			</table>
@@ -182,7 +229,6 @@
 
 		//=================Password 정규표현식==========================
 		var pwRegex = /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{8,20}$/;
-			
 
 		//=================Password 검증==========================
 		var confirmPWError = document.getElementById('confirmPWError');
@@ -222,10 +268,25 @@
 
 		}
 
+		//===================아이디 입력 칸이 비활성화된 경우 양식을 제출할 수 있는지 확인하는 함수==================
+		function canSubmitForm() {
+			var memberId = document.getElementById('_member_id').value;
+			var btnOverlapped = document.getElementById('btnOverlapped');
+
+			// 아이디가 비어있지 않고, 버튼이 비활성화된 경우 양식을 제출할 수 있도록 true 반환
+			if (memberId !== '' && btnOverlapped.disabled) {
+				return true; // 양식 제출 허용
+			} else {
+				alert('ID 중복 체크를 해주세요.');
+				return false; // 양식 제출 방지
+			}
+		}
+
 		//============================아이디중복체크를 위한 함수============================
 		function fn_overlapped() {
 			var _id = $("#_member_id").val();
-			/* 			 console.log("전송되는 Member ID 값:", _id); */
+
+			// ID가 비어있을 경우 경고창 출력 후 중지
 			if (_id == '') {
 				alert("ID를 입력하세요");
 				return;
@@ -272,18 +333,18 @@
 			}
 		}
 		//========================email2를 적용하는 함수=======================
-		  function updateEmail() {
-		        var email2Input = document.getElementById('email2Input');
-		        var emailDomain = document.getElementById('emailDomain');
-		        var selectedDomain = emailDomain.options[emailDomain.selectedIndex].value;
+		function updateEmail() {
+			var email2Input = document.getElementById('email2Input');
+			var emailDomain = document.getElementById('emailDomain');
+			var selectedDomain = emailDomain.options[emailDomain.selectedIndex].value;
 
-		        // 선택한 이메일 옵션을 email2Input에 설정
-		        if (selectedDomain === 'non') {
-		            email2Input.value = '';
-		        } else {
-		            email2Input.value = selectedDomain;
-		        }
-		    }
+			// 선택한 이메일 옵션을 email2Input에 설정
+			if (selectedDomain === 'non') {
+				email2Input.value = '';
+			} else {
+				email2Input.value = selectedDomain;
+			}
+		}
 
 		//==============================도로명 주소 함수================================
 		function execDaumPostcode() {
@@ -320,7 +381,7 @@
 
 							// 우편번호와 주소 정보를 해당 필드에 넣는다.
 							document.getElementById('zipcode').value = data.zonecode; //5자리 새우편번호 사용
-						/* 	document.getElementById('roadAddress').value = fullRoadAddr; */
+							/* 	document.getElementById('roadAddress').value = fullRoadAddr; */
 							document.getElementById('jibunAddress').value = data.jibunAddress;
 
 							// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
@@ -331,10 +392,10 @@
 								document.getElementById('guide').innerHTML = '(예상 도로명 주소 : '
 										+ expRoadAddr + ')';
 
-				/* 		} else if (data.autoJibunAddress) {
-								var expJibunAddr = data.autoJibunAddress;
-								document.getElementById('guide').innerHTML = '(예상 지번 주소 : '
-										+ expJibunAddr + ')';  */
+								/* 		} else if (data.autoJibunAddress) {
+												var expJibunAddr = data.autoJibunAddress;
+												document.getElementById('guide').innerHTML = '(예상 지번 주소 : '
+														+ expJibunAddr + ')';  */
 							} else {
 								document.getElementById('guide').innerHTML = '';
 							}
