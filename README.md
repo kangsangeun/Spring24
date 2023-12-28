@@ -6,6 +6,9 @@ Spring Framdwork를 활용하여 편의점 쇼핑몰 웹사이트를 만들어�
 Spring을 활용했다는 뜻으로 Spring24라는 편의점 이름을 만들었습니다. 
 <br><br>
 
+<h2>📌기간/인원</h2>
+23.11.15 ~ 진행중
+지원자 포함 3인 팀 프로젝트
 
 <h2>⚙️프로젝트 개발 환경</h2>
 
@@ -16,7 +19,13 @@ Spring을 활용했다는 뜻으로 Spring24라는 편의점 이름을 만들었
 5. 빌드 툴 : Maven
 6. 관리 툴 : GitHub
 
+<h2>지원자 개인 기여</h2>
 
+역할 요약 : 내부로직 구현, 리팩토링
+
+세부 내용
+> 회원가입 페이지 로직 구현, DB에 전달하는 과정을 개선 및 최적화
+> 상품 카테고리 로직 구현
 
 <h2>📌프로젝트 구현 기능</h2>
 
@@ -25,7 +34,7 @@ Spring을 활용했다는 뜻으로 Spring24라는 편의점 이름을 만들었
 <br>
 <br>
 <li>카테고리(Category)</li>
-카테고리 목록 / 카테고리별 상품 리스트 / 카테고리별 상품 상세페이지
+카테고리 전체 목록 / 카테고리별 상품 리스트 / 카테고리별 상품 상세페이지
 <br>
 <br>
 <li>주문 (Order)</li>
@@ -48,4 +57,4 @@ Spring을 활용했다는 뜻으로 Spring24라는 편의점 이름을 만들었
 <img src="https://github-readme-stats.vercel.app/api?username=kangsangeun&show_icons=true">
 </div>
 
-readme test
+
