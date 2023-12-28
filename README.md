@@ -52,10 +52,6 @@ Spring을 활용했다는 뜻으로 Spring24라는 편의점 이름을 만들었
   주문 관리 - 주문 조회 / 주문 수정 / 주문 취소<br>
   회원 관리 - 회원정보 조회 / 회원정보 수정 / 회원정보 삭제(회원탈퇴) <br>
 
-<br><br>
-<div center-center>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=kangsangeun&layout=compact"><br><br>
-<img src="https://github-readme-stats.vercel.app/api?username=kangsangeun&show_icons=true">
-</div>
+
 
 
